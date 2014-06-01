@@ -1,7 +1,9 @@
 var User = require('./user');
+var Auth = require('./auth');
 
 var Model = {
-    User: User
+    User: User,
+    Auth: Auth
 };
 
-exports.Model = Model;
+module.exports = Model;

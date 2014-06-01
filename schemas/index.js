@@ -1,6 +1,8 @@
 var User = require('./user');
+var Auth = require('./auth');
 var Schema = {
-    User: User
+    User: User,
+    Auth: Auth
 };
 
-exports.Schema = Schema;
+module.exports = Schema;

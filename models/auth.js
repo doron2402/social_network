@@ -1,0 +1,1 @@
+var Auth = SN.Mongoose.model('authSchema', SN.Schema.Auth);

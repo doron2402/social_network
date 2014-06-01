@@ -1,4 +1,4 @@
-var User = {};
+var User = SN.Mongoose.model('userSchema', SN.Schema.User);
 
 //Return Bool
 User.isFollow = function(user_id, target_id, cb){

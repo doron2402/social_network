@@ -1,12 +1,12 @@
 module.exports = {
     dev: {
         host: 'localhost',
-        port: 8080,
+        port: 9876,
         mongo: 'mongodb://localhost/test'  
     },
     prod: {
         host: 'localhost',
-        port: 8080 
+        port: 9876 
     }
     
 };
