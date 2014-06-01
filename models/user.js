@@ -22,6 +22,8 @@ User.unFollowTargetUser = function(user_id, target_id, cb) {
         if (!result){
             cb(SN.Errors.ResourceNotFound,null);
         }
-        
+
     });
-}
+};
+
+module.exports = User;

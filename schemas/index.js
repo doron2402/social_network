@@ -1,7 +1,6 @@
 var User = require('./user');
-
-var Model = {
+var Schema = {
     User: User
 };
 
-exports.Model = Model;
+exports.Schema = Schema;
