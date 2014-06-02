@@ -1,1 +1,3 @@
-var Auth = SN.Mongoose.model('authSchema', SN.Schema.Auth);
+var Auth = SN.Mongoose.model('auth', SN.Schema.Auth);
+
+module.exports = Auth;

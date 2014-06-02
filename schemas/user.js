@@ -9,10 +9,6 @@ var userSchema = SN.Mongoose.Schema({
     phone: Number,
     email: String,
     birthdate: Date,
-    follower_ct: Number,
-    followers: [],
-    following_ct: Number,
-    following: [],
     createAt: Date,
     updateAt: { type: Date, default: Date.now }
 });
