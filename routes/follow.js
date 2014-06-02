@@ -37,15 +37,10 @@ Follow.userFollowAnotherUser = {
 
             SN.Joi.validate(request.params, SN.Validation.Follow.userFollowAnotherUser, function (err, value) {
                 if (err) {
-                    return reply({ 
-                        code: 'Fail', 
-                        err: { 
-                            code: err.name, 
-                            details: err.details[0] 
-                        } 
-                    });
+                    return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
                 }
-                SN.Model.Follow.followTargetUser(request.params, function(err, result) {
+                SN.Model.Follow.followTargetUser(value, function(err, result) {
+                    console.log(result);
                     if (err){
                         return reply({ code: 'Fail', data: err });
                     }
