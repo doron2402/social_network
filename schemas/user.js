@@ -7,12 +7,8 @@ var userSchema = SN.Mongoose.Schema({
         last: String
     },
     phone: Number,
-    email: String,
+    email: { type: String, lowercase: true },
     birthdate: Date,
-    follower_ct: Number,
-    followers: [],
-    following_ct: Number,
-    following: [],
     createAt: Date,
     updateAt: { type: Date, default: Date.now }
 });
