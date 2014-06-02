@@ -39,4 +39,17 @@ UserModel.getUser = function(args, cb) {
     });
 };
 
+UserModel.checkIfUserExist = function(user_id, cb) {
+    if (!user_id){
+        return cb({err: 'Params are Missing'}, null);
+    }
+    
+    UserModel.findOne({ id: user_id }, function(err, result) {
+        if (err || SN._.isEmpty(result)) {
+            return cb(err, null);
+        }
+        return cb(null, result);
+    });
+};
+
 module.exports = UserModel;

@@ -7,7 +7,7 @@ var userSchema = SN.Mongoose.Schema({
         last: String
     },
     phone: Number,
-    email: String,
+    email: { type: String, lowercase: true },
     birthdate: Date,
     createAt: Date,
     updateAt: { type: Date, default: Date.now }
