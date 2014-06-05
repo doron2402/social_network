@@ -31,7 +31,7 @@ Follow.getNumberOfFollowing = function(req, res) {
 */
 Follow.userFollowAnotherUser = {
     method: 'PUT',
-    path: '/api/users/{user_id}/follow/{target_id}', 
+    path: '/api/users/{user_id}/follow/{target_id}',
     config: {
         handler: function (request, reply) {
 
@@ -39,6 +39,7 @@ Follow.userFollowAnotherUser = {
                 if (err) {
                     return reply({ code: 'Fail', err: { code: err.name, details: err.details[0] } });
                 }
+
                 SN.Model.Follow.followTargetUser(value, function(err, result) {
                     console.log(result);
                     if (err){
@@ -76,7 +77,7 @@ Follow.isFollowing = function(req, res) {
     Params: user_id, target_id
     check if target_id is in user followers array
     Return: Bool
-*/ 
+*/
 Follow.isFollowBy = function(req, res) {
 
 };

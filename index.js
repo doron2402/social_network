@@ -15,9 +15,15 @@ SN.Validation = require('./adapters/validations');
 SN.Server = new SN.Hapi.Server(SN.Settings.host, SN.Settings.port, { cors: true });
 
 SN.Server.route([
+    //Users
     SN.Route.User.createUser,
-    SN.Route.User.getUser,
-    SN.Route.Follow.userFollowAnotherUser
+    SN.Route.User.getUserById,
+    SN.Route.User.deleteUserById,
+    SN.Route.User.getUserByUsername,
+    //Follow
+    SN.Route.Follow.userFollowAnotherUser,
+    //Auth
+    SN.Route.Auth.authenticateUserByPassword
 ]);
 
 SN.Server.start(function () {

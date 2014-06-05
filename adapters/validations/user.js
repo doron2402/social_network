@@ -11,9 +11,17 @@ User.createUser = {
     middle_name: Joi.string().regex(/[a-zA-Z]{2,32}/).optional()
 };
 
-User.getUser = {
-    username: Joi.string().alphanum().min(3).max(30).optional(),
-    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).optional()
+User.getUserById = {
+    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
+};
+
+User.getUserByUsername = {
+    username: Joi.string().alphanum().min(3).max(30).required()
+};
+
+
+User.userDeleteById = {
+    user_id: Joi.string().regex(/[a-zA-Z0-9]{3,30}/).required()
 };
 
 module.exports = User;

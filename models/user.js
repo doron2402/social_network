@@ -24,19 +24,35 @@ UserModel.createUser = function(args, cb) {
         SN.Model.Follow.createEmptyDoc(user._id, function(err, result){
             if (err) { return cb({err: "Internal Error"}, null); }
             console.log(result);
-            return cb(null, {code: 'Saved'});    
+            return cb(null, {code: 'Saved'});
         })
-        
+
     });
 };
 
-UserModel.getUser = function(args, cb) {
-    
-    UserModel.findOne({ username: args.username }, function(err, result){
+UserModel.getUserById = function(args, cb) {
+    if (!args || !args.user_id) {
+        return cb({err: 'Params are Missing'}, null);
+    }
+    var ObjectId = SN.Mongoose.Types.ObjectId;
+    var query = { _id: new ObjectId(args.user_id) };
+    return UserModel.getUserQuery(query, cb);
+};
+
+UserModel.getUserByUsername = function(args, cb) {
+    if (!args || !args.username) {
+        return cb({err: 'Params are Missing'}, null);
+    }
+    var query = { username: args.username };
+    return UserModel.getUserQuery(query, cb);
+};
+
+UserModel.getUserQuery = function(query, cb) {
+    UserModel.findOne(query, function(err, result){
         if (err) {
             return cb('something went wrong', null);
         }
-        
+
         if (SN._.isEmpty(result)){
             return cb(null, {code: 'Resource Not Found'});
         }
@@ -45,13 +61,18 @@ UserModel.getUser = function(args, cb) {
     });
 };
 
+UserModel.deleteUserQuery = function(query, cb) {
+    UserModel.remove(query, function(err, result){
+        return cb(err, result);
+    });
+}
 
 UserModel.checkIfUserExist = function(user_id, cb) {
 
     if (!user_id){
         return cb({err: 'Params are Missing'}, null);
     }
-    var ObjectId = SN.Mongoose.Types.ObjectId; 
+    var ObjectId = SN.Mongoose.Types.ObjectId;
     var query = { _id: new ObjectId(user_id) };
     UserModel.findOne(query, function(err, result) {
         if (err || SN._.isEmpty(result)) {
@@ -59,6 +80,15 @@ UserModel.checkIfUserExist = function(user_id, cb) {
         }
         return cb(null, result);
     });
+};
+
+UserModel.deleteUserById = function(user_id, cb) {
+    if (!user_id) {
+        return cb({err: 'Params are Missing'}, null);
+    }
+    var ObjectId = SN.Mongoose.Types.ObjectId;
+    var query = { _id: new ObjectId(user_id) };
+    UserModel.deleteUserQuery(query, cb);
 };
 
 module.exports = UserModel;
