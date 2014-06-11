@@ -1,0 +1,21 @@
+function find_pattern_brute(tmp_string, pattern) {
+    var run_for = tmp_string.length - pattern.length;
+    var found = false;
+    for (var i=0; i < run_for; i++){
+        console.log('i = ' + i);
+
+        if (pattern[0] == tmp_string[i]){
+            found = true;
+            for(var j=1; j<pattern.length; j++){
+                if (pattern[j] != tmp_string[i+j]){
+                    found = false;
+                }
+            }
+        }
+        if (found) {
+            console.log('Found pattern at: ' + i);
+            found = false;
+        }
+    }
+}
+

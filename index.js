@@ -16,10 +16,10 @@ SN.Server = new SN.Hapi.Server(SN.Settings.host, SN.Settings.port, { cors: true 
 
 SN.Server.route([
     //Users
-    SN.Route.User.createUser,
-    SN.Route.User.getUserById,
-    SN.Route.User.deleteUserById,
-    SN.Route.User.getUserByUsername,
+    SN.Route.User.createUser, //Create
+    SN.Route.User.getUserById, //Get by Id
+    SN.Route.User.deleteUserById, //Delete user by user id
+    SN.Route.User.getUserByUsername, //get user object bye username
     //Follow
     SN.Route.Follow.userFollowAnotherUser,
     //Auth
