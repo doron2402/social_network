@@ -23,7 +23,15 @@ SN.Server.route([
     //Follow
     SN.Route.Follow.userFollowAnotherUser,
     //Auth
-    SN.Route.Auth.authenticateUserByPassword
+    SN.Route.Auth.authenticateUserByPassword,
+    //List Of Products
+    SN.Route.Product.getListOfLevel0,
+    SN.Route.Product.getProductsLevelZero,
+    SN.Route.Product.getProductsLevelOne,
+    SN.Route.Product.getProductsLevelTwo,
+    //Get Specific Product
+    SN.Route.Product.getProductById
+
 ]);
 
 SN.Server.start(function () {
